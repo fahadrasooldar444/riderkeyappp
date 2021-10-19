@@ -103,7 +103,7 @@ class GeneralList(generics.ListAPIView):
             employee_objects = model.objects.all()
 
             if employee_id:
-                employee_objects.filter(employee=employee_id)
+                employee_objects = employee_objects.filter(employee=employee_id)
 
             if month and year:
                 employee_objects.filter(created_at__year=year, created_at__month=month)
