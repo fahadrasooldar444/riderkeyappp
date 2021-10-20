@@ -14,6 +14,7 @@ from drf_yasg.views import get_schema_view
 from rest_framework_simplejwt.views import TokenVerifyView
 
 from common.permissions import IsAdmin, IsStaff
+from keyarabia.api import CustomLoginView
 
 schema_view = get_schema_view(
     openapi.Info(
@@ -34,7 +35,8 @@ urlpatterns = [
     ),
     path("auth/password/reset/", PasswordResetView.as_view(), name="rest_password_reset"),
     path("auth/password/reset/confirm/", PasswordResetConfirmView.as_view(), name="rest_password_reset_confirm"),
-    path("auth/login/", LoginView.as_view(), name="rest_login"),
+    #path("auth/login/", LoginView.as_view(), name="rest_login"),
+    path("auth/login/", CustomLoginView.as_view(), name="custom_login"),
     path("auth/logout/", LogoutView.as_view(), name="rest_logout"),
     path("auth/password/change/", PasswordChangeView.as_view(), name="rest_password_change"),
     path("auth/token/verify/", TokenVerifyView.as_view(), name="token_verify"),
