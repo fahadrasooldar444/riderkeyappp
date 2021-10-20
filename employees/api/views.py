@@ -109,7 +109,7 @@ class GeneralList(generics.ListAPIView):
                 employee_objects = employee_objects.filter(created_at__year=year, created_at__month=month)
 
             if user.type.lower() == "staff":
-                employee_objects.filter(country=user.country)
+                employee_objects = employee_objects.filter(country=user.country)
 
             return employee_objects
         except LookupError:
