@@ -30,6 +30,11 @@ urlpatterns = [
         views.GeneralList.as_view(),
         kwargs={"model_name": "cashnds"},
     ),
+    path(
+        "cashnds/<int:employee_id>/<int:day>/<int:month>/<int:year>/",
+        views.GeneralList.as_view(),
+        kwargs={"model_name": "cashnds"},
+    ),
     path("payslips/", views.GeneralList.as_view(), kwargs={"model_name": "payslips"}),
     path("payslips/<int:employee_id>/", views.GeneralList.as_view(), kwargs={"model_name": "payslips"}),
     path(

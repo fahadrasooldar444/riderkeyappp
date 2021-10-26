@@ -69,34 +69,24 @@ class EmployeesRetriveSerializer(EmployeeBaseSerializer):
             "passport_image",
             "license_image",
             "visa_image",
+            'cnd',
+            'created_at',
+            'updated_at'
         )
 
 
-class EmployeesStaffSerializer(EmployeesRetriveSerializer):
+class EmployeesStaffSerializer(serializers.ModelSerializer):
     class Meta:
         model = Employees
         fields = "__all__"
         read_only_fields = ["created_at", "updated_at"]
 
 
-class EmployeesUpdateSerializer(EmployeeBaseSerializer):
+class EmployeesUpdateSerializer(serializers.ModelSerializer):
     class Meta:
         model = Employees
-        fields = (
-            "image",
-            "contact_numer",
-            "visa",
-            "passport_number",
-            "passport_expiry_date",
-            "license",
-            "license_expiry_date",
-            "vehicle_type",
-            "vehicle_make_model",
-            "cpr_image",
-            "passport_image",
-            "license_image",
-            "visa_image",
-        )
+        fields = "__all__"
+        read_only_fields = ["created_at", "updated_at"]
 
 
 class TimesheetsSerializer(serializers.ModelSerializer):
