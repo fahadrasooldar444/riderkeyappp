@@ -107,11 +107,11 @@ class GeneralList(generics.ListAPIView):
                 employee_objects = employee_objects.filter(employee=employee_id)
 
             if month and year:
-                employee_objects = employee_objects.filter(created_at__year=year, created_at__month=month)
+                employee_objects = employee_objects.filter(date_selected__year=year, date_selected__month=month)
 
             if day and month and year:
-                employee_objects = employee_objects.filter(created_at__year=year, created_at__month=month,
-                                                           created_at__day=day)
+                employee_objects = employee_objects.filter(date_selected__year=year, date_selected__month=month,
+                                                           date_selected__day=day)
 
             if user.type.lower() == "staff":
                 employee_objects = employee_objects.filter(country=user.country)

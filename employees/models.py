@@ -281,7 +281,7 @@ class CashNds(models.Model):
     previous_balance = models.DecimalField(max_digits=5, decimal_places=2)
     bonus = models.DecimalField(max_digits=5, decimal_places=2, blank=True, null=True)
     bonus_type = models.CharField(max_length=255, blank=True, null=True)
-    date_selected = models.CharField(max_length=255)
+    date_selected = models.DateField(max_length=255)
     date_cod = models.DecimalField(max_digits=5, decimal_places=2)
     date_pending = models.DecimalField(max_digits=5, decimal_places=2)
     deposit_status = models.CharField(max_length=255)
