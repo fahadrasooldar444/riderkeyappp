@@ -204,6 +204,7 @@ class Employees(models.Model):
     cpr_image = CloudinaryField(blank=True, null=True)
     image = CloudinaryField(blank=True, null=True)
     passport_image = CloudinaryField(blank=True, null=True)
+
     license_image = CloudinaryField(blank=True, null=True)
     visa_image = CloudinaryField(blank=True, null=True)
     contract_file = models.FileField(max_length=255, blank=True, null=True)
@@ -310,3 +311,20 @@ class Payslips(models.Model):
 
     class Meta:
         db_table = "payslips"
+
+
+class DriverWallets(models.Model):
+    id = models.BigAutoField(primary_key=True)
+    employee = models.ForeignKey('Employees', models.DO_NOTHING)
+    date = models.DateField(max_length=255)
+    trans_amount = models.CharField(max_length=255)
+    trans_mode = models.CharField(max_length=255)
+    trans_type = models.CharField(max_length=255)
+    trans_reference = models.ImageField(upload_to="images/")
+    trans_status = models.CharField(max_length=255)
+    created_at = models.DateTimeField(auto_now_add=True, blank=True, null=True)
+    updated_at = models.DateTimeField(auto_now=True, blank=True, null=True)
+
+    class Meta:
+        managed = False
+        db_table = 'driver_wallets'

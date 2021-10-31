@@ -3,10 +3,11 @@ from django.contrib.auth import get_user_model
 from django.http.response import Http404
 from rest_framework import generics, viewsets
 from rest_framework.parsers import JSONParser, MultiPartParser
+from rest_framework.generics import CreateAPIView
 
 from common.permissions import IsAdmin, IsOwner, IsStaff
 
-from ..models import Accounts, Employees
+from ..models import Accounts, Employees, DriverWallets
 from .serializers import (
     CashNdsSerializer,
     EmployeesRetriveSerializer,
@@ -14,7 +15,7 @@ from .serializers import (
     EmployeesUpdateSerializer,
     PaylipsSerializer,
     PerformancesSerializer,
-    TimesheetsSerializer,
+    TimesheetsSerializer, DriverWalletsSerializer,
 )
 
 User = get_user_model()
@@ -130,3 +131,7 @@ class GeneralList(generics.ListAPIView):
         elif self.model_name == "cashnds":
             return CashNdsSerializer
         raise Http404
+
+
+class DepositSlipAPIView(CreateAPIView):
+    serializer_class = DriverWalletsSerializer
