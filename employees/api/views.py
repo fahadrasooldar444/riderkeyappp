@@ -42,7 +42,7 @@ class EmployeesViewSet(viewsets.ModelViewSet):
         if self.action == "retrieve":
             permission_classes = [IsAdmin | IsStaff | IsOwner]
         else:
-            permission_classes = [IsAdmin | IsStaff]
+            permission_classes = [IsAdmin | IsStaff | IsOwner]
         return [permission() for permission in permission_classes]
 
     def get_serializer_class(self):

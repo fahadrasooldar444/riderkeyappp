@@ -117,14 +117,14 @@ JWT_AUTH_REFRESH_COOKIE = "refresh_token"
 
 JWT_AUTH = {
     # how long the original token is valid for
-    'JWT_EXPIRATION_DELTA': datetime.timedelta(days=14),
+    'JWT_EXPIRATION_DELTA': datetime.timedelta(days=7),
 
     # allow refreshing of tokens
-    #'JWT_ALLOW_REFRESH': True,
+    'JWT_ALLOW_REFRESH': True,
 
     # this is the maximum time AFTER the token was issued that
     # it can be refreshed.  exprired tokens can't be refreshed.
-    #'JWT_REFRESH_EXPIRATION_DELTA': datetime.timedelta(days=7),
+    'JWT_REFRESH_EXPIRATION_DELTA': datetime.timedelta(days=10),
 }
 
 AUTH_PASSWORD_VALIDATORS = [
