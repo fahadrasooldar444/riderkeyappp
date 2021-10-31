@@ -121,3 +121,4 @@ class DriverWalletsSerializer(serializers.ModelSerializer):
     class Meta:
         model = DriverWallets
         fields = ("employee", "date", "trans_amount", "trans_mode", "trans_type", "trans_reference", "trans_status")
+

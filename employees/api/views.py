@@ -3,7 +3,11 @@ from django.contrib.auth import get_user_model
 from django.http.response import Http404
 from rest_framework import generics, viewsets
 from rest_framework.parsers import JSONParser, MultiPartParser
-from rest_framework.generics import CreateAPIView
+from rest_framework.generics import CreateAPIView, RetrieveAPIView
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from django.db.models import Sum
+from rest_framework.permissions import AllowAny
 
 from common.permissions import IsAdmin, IsOwner, IsStaff
 
@@ -135,3 +139,21 @@ class GeneralList(generics.ListAPIView):
 
 class DepositSlipAPIView(CreateAPIView):
     serializer_class = DriverWalletsSerializer
+
+
+class CashNdsAPIView(APIView):
+    permission_classes = (AllowAny,)
+
+    def get(self, request, *args, **kwargs):
+        emp_id = kwargs.get('employee_id', None)
+        outgoing_trans_amount = DriverWallets.objects.filter(employee=emp_id, trans_type="outgoing").\
+            aggregate(outgoing = Sum('trans_amount'))
+        incoming_trans_amount = DriverWallets.objects.filter(employee=emp_id, trans_type="incoming").\
+            aggregate(incoming = Sum('trans_amount'))
+        if incoming_trans_amount["incoming"] is None:
+            incoming_trans_amount["incoming"] = 0
+        if outgoing_trans_amount["outgoing"] is None:
+            outgoing_trans_amount["outgoing"] = 0
+        cash_n_ds = outgoing_trans_amount["outgoing"] - incoming_trans_amount["incoming"]
+        return Response({"cash_n_ds": cash_n_ds})
+

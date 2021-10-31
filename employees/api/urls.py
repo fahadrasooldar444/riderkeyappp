@@ -43,6 +43,7 @@ urlpatterns = [
         kwargs={"model_name": "payslips"},
     ),
     path("deposit-slip/", views.DepositSlipAPIView.as_view()),
+    path("cashnds-amount/<int:employee_id>/", views.CashNdsAPIView.as_view()),
 ]
 
 urlpatterns += router.urls
