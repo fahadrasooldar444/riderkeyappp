@@ -88,7 +88,8 @@ class EmployeesStaffSerializer(serializers.ModelSerializer):
 class EmployeesUpdateSerializer(serializers.ModelSerializer):
     class Meta:
         model = Employees
-        fields = "__all__"
+        exclude = ("verified", "user_id", "country", "designation_id",
+                    "department_id", "team_id", "salary_structure")
         read_only_fields = ["created_at", "updated_at"]
 
 
