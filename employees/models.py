@@ -320,11 +320,11 @@ class DriverWallets(models.Model):
     trans_amount = models.CharField(max_length=255)
     trans_mode = models.CharField(max_length=255)
     trans_type = models.CharField(max_length=255)
-    trans_reference = models.ImageField(upload_to="images/")
+    trans_reference = models.CharField(max_length=255)
     trans_status = models.CharField(max_length=255)
     created_at = models.DateTimeField(auto_now_add=True, blank=True, null=True)
     updated_at = models.DateTimeField(auto_now=True, blank=True, null=True)
 
     class Meta:
-        managed = False
+        managed = True
         db_table = 'driver_wallets'
