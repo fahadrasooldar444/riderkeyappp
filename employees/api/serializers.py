@@ -46,36 +46,37 @@ class EmployeesRetriveSerializer(EmployeeBaseSerializer):
 
     class Meta:
         model = Employees
-        fields = (
-            "id",
-            "talabat_id",
-            "name",
-            "status",
-            "designation_id",
-            "team_id",
-            "salary_structure",
-            "department_id",
-            "visa",
-            "iban",
-            "contact_numer",
-            "cpr",
-            "country",
-            "passport_number",
-            "passport_expiry_date",
-            "license",
-            "license_expiry_date",
-            "vehicle_type",
-            "vehicle_make_model",
-            "image",
-            "cpr_image",
-            "contract_file",
-            "passport_image",
-            "license_image",
-            "visa_image",
-            'cnd',
-            'created_at',
-            'updated_at'
-        )
+        fields = "__all__"
+        #fields = (
+        #    "id",
+        #    "talabat_id",
+        #    "name",
+        #    "status",
+        #    "designation_id",
+        #    "team_id",
+        #    "salary_structure",
+        #    "department_id",
+        #    "visa",
+        #    "iban",
+        #    "contact_numer",
+        #    "cpr",
+        #    "country",
+        #    "passport_number",
+        #    "passport_expiry_date",
+        #    "license",
+        #    "license_expiry_date",
+        #    "vehicle_type",
+        #    "vehicle_make_model",
+        #    "image",
+        #    "cpr_image",
+        #    "contract_file",
+        #    "passport_image",
+        #    "license_image",
+        #    "visa_image",
+        #    'cnd',
+        #    'created_at',
+        #    'updated_at'
+        #)
 
 
 class EmployeesStaffSerializer(serializers.ModelSerializer):
