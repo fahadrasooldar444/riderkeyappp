@@ -204,16 +204,21 @@ class Employees(models.Model):
     cpr_image = CloudinaryField(blank=True, null=True)
     image = CloudinaryField(blank=True, null=True)
     passport_image = CloudinaryField(blank=True, null=True)
+    vehicle_reg_image = CloudinaryField(blank=True, null=True)
 
     license_image = CloudinaryField(blank=True, null=True)
     visa_image = CloudinaryField(blank=True, null=True)
     contract_file = models.FileField(max_length=255, blank=True, null=True)
     passport_number = models.CharField(unique=True, max_length=255, blank=True, null=True)
     passport_expiry_date = models.DateField(blank=True, null=True)
+    vehicle_reg_expiry_date = models.DateField(blank=True, null=True)
     salary_structure = models.ForeignKey("SalaryStructures", models.DO_NOTHING, db_column="salary_structure")
     created_at = models.DateTimeField(auto_now_add=True, blank=True, null=True)
     updated_at = models.DateTimeField(auto_now=True, blank=True, null=True)
     iban = models.CharField(max_length=255, blank=True, null=True)
+    vaccination = models.CharField(max_length=255, blank=True, null=True)
+    city = models.CharField(max_length=255, blank=True, null=True)
+    vehicle_ownership = models.CharField(max_length=255, blank=True, null=True)
     cnd = models.DecimalField(max_digits=5, decimal_places=2, blank=True, null=True)
 
     class Meta:

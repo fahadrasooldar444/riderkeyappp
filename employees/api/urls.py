@@ -44,6 +44,7 @@ urlpatterns = [
     ),
     path("deposit-slip/", views.DepositSlipAPIView.as_view()),
     path("cashnds-amount/<int:employee_id>/", views.CashNdsAPIView.as_view()),
+    path("submitted-deposit-slip-iraq/<int:employee_id>/", views.SubmittedDepositSlipIraqAPIView.as_view()),
 ]
 
 urlpatterns += router.urls

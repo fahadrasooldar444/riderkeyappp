@@ -96,10 +96,34 @@ DATABASES = {
         default=config(
             "DATABASE_URL",
             default="mysql://admin:yv2plm9mze3551dv@db-mysql-lon1-79982-do-user-3498265-0.b.db.ondigitalocean.com:25060/riderkeys",
+
+
+
         ),
+
         conn_max_age=600,
     ),
 }
+
+# DATABASES = {
+#
+#     'default': {
+#
+#         'ENGINE': 'django.db.backends.mysql',
+#
+#         'NAME': 'keyarabia-hr',
+#
+#         'USER': 'root',
+#
+#         'PASSWORD': '',
+#
+#         'HOST': 'localhost',
+#
+#         'PORT': '3306',
+#
+#     }
+#
+# }
 
 # ==============================================================================
 # AUTHENTICATION AND AUTHORIZATION SETTINGS

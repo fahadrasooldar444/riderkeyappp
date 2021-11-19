@@ -157,3 +157,13 @@ class CashNdsAPIView(APIView):
         cash_n_ds = outgoing_trans_amount["outgoing"] - incoming_trans_amount["incoming"]
         return Response({"cash_n_ds": cash_n_ds})
 
+
+class SubmittedDepositSlipIraqAPIView(APIView):
+    permission_classes = (AllowAny,)
+
+    def get(self, request, *args, **kwargs):
+        emp_id = kwargs.get('employee_id', None)
+        driver_wallets = DriverWallets.objects.filter(employee=emp_id, trans_status="Submitted")
+        serializer = DriverWalletsSerializer(driver_wallets, many=True).data
+        return Response(serializer)
+
